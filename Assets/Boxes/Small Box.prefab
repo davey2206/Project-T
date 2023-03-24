@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2373804842637345375}
   m_Layer: 0
   m_Name: Small Box
-  m_TagString: Ground
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2373804842637345375
 BoxCollider2D:
