@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float MovementSpeed;
     [SerializeField] public float JumpStrength;
 
+    Animator animator;
     Rigidbody2D rb;
     PlayerControls controls;
     float movement;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
         controls = new PlayerControls();
 
         controls.Player.Movement.performed += context => movement = context.ReadValue<float>();
@@ -35,10 +36,16 @@ public class PlayerMovement : MonoBehaviour
         if (movement < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            animator.SetBool("Moving", true);
         }
         else if (movement > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
         }
     }
 
