@@ -8,7 +8,14 @@ public class SceneManager_Script : MonoBehaviour
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        if (SceneManager.sceneCountInBuildSettings != currentSceneIndex + 1)
+        {
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void LoadMenuScene()
