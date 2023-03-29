@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Reset_WhenTouched : MonoBehaviour
 {
-    public PlayerMovement movement;
-    void OnCollisionEnter( Collision collisionInfo)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collisionInfo.collider.tag == "Death")
+        if (collision.CompareTag("Player"))
         {
-            movement.enabled = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
     }
