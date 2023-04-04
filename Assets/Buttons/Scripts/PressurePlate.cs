@@ -5,6 +5,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     Button_Transmitter transmitter;
+    [SerializeField][Range(0, 1)] float timeActiveAfterRelease;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class PressurePlate : MonoBehaviour
 
     IEnumerator onExit()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(timeActiveAfterRelease);
         transmitter.SetState(false);
     }
 }
