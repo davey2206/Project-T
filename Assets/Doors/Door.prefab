@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 7808969937344235246}
+  UseSwitch: 0
 --- !u!1 &7808969937344235246
 GameObject:
   m_ObjectHideFlags: 0

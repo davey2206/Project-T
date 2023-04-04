@@ -10,17 +10,22 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] GameObject platform;
     [SerializeField] bool moving;
 
+    Switch_Receiver receiver;
+
     private int i;
 
     // Start is called before the first frame update
     void Start()
     {
+        receiver = GetComponent<Switch_Receiver>();
         platform.transform.position = points[StartingPoint].position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        SwitchMoving(receiver.getState());
+
         if (moving)
         {
             move();
@@ -41,8 +46,8 @@ public class PlatformMove : MonoBehaviour
         platform.transform.position = Vector2.MoveTowards(platform.transform.position, points[i].position, speed * Time.deltaTime);
     }
 
-    public void SwitchMoving()
+    public void SwitchMoving(bool stat)
     {
-        moving = !moving;
+        moving = stat;
     }
 }
