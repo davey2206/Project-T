@@ -20,6 +20,8 @@ public class BreakeblePlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.mass= 50f;
+        rb.gravityScale= 25f;
         Destroy(gameObject, destroyDelay);
     }
 }
