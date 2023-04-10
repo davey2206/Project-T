@@ -42,7 +42,7 @@ public class Switch_Script : MonoBehaviour
 
         if (!context.started) return;
 
-        if (dist > 20) return;
+        if (dist > 12) return;
 
         SwitchTransmitter.SwitchStates();
     }

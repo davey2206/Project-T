@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (dist > 20) return;
+        if (dist > 12) return;
 
         portalManager.SwitchTime();
     }
