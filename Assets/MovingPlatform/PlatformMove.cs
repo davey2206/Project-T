@@ -24,7 +24,10 @@ public class PlatformMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SwitchMoving(receiver.getState());
+        if (receiver != null)
+        {
+            SwitchMoving(receiver.getState());
+        }
 
         if (moving)
         {

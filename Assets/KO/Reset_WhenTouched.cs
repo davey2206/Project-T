@@ -9,7 +9,13 @@ public class Reset_WhenTouched : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            var player = collision.GetComponent<PlayerRewind>();
+
+            if (!player.GetActive())
+            {
+                collision.GetComponent<PlayerRewind>().StartRewindTimeToStart();
+            }
+            
         }
     }
 }

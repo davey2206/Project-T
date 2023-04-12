@@ -11,6 +11,10 @@ public class PlayerRewind : MonoBehaviour
     bool time;
     bool active = false;
 
+    public bool GetActive()
+    {
+        return active;
+    }
 
 
     private void Start()
@@ -35,11 +39,12 @@ public class PlayerRewind : MonoBehaviour
         }
     }
 
-    void StartRewindTimeToStart()
+    public void StartRewindTimeToStart()
     {
         active = true;
         StopAllCoroutines();
         rewindFrames.Reverse();
+        GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
         StartCoroutine(RewindTimeToStart());
