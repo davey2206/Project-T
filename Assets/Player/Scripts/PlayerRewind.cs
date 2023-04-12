@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class PlayerRewind : MonoBehaviour
 {
@@ -53,17 +54,26 @@ public class PlayerRewind : MonoBehaviour
     IEnumerator RewindTimeToStart()
     {
         bool oldTime = time;
-        foreach (var frame in rewindFrames)
+        int counter = 0;
+        int RewindSpeed = 1;
+
+        for (int i = 0; i < rewindFrames.Count; i = i + RewindSpeed)
         {
+            counter++;
             yield return new WaitForEndOfFrame();
 
-            if (oldTime != frame.Time)
+            if (oldTime != rewindFrames[i].Time)
             {
                 portalManager.SwitchTime();
             }
 
-            transform.position = new Vector2(frame.X, frame.Y);
-            oldTime = frame.Time;
+            transform.position = new Vector2(rewindFrames[i].X, rewindFrames[i].Y);
+            oldTime = rewindFrames[i].Time;
+
+            if (counter % 20 == 0)
+            {
+                RewindSpeed++;
+            }
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -73,7 +83,7 @@ public class PlayerRewind : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForEndOfFrame();
             if (portalManager == null)
             {
                 time = false;
