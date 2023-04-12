@@ -1227,7 +1227,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a24cfc49c46d9dc46a1630898a731125, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 655f894e15f0dc44dbe78c3e4595f08e, type: 2}
 --- !u!4 &778104778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7308950620238351953, guid: 3fd9016de2c9a384ab1f0042928a4531, type: 3}
@@ -3062,9 +3062,9 @@ MonoBehaviour:
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
+  m_VolumeTrigger: {fileID: 2111757325}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
