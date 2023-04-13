@@ -5572,6 +5572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalManager: {fileID: 0}
+  rewindSound: {fileID: -1153883547729107724, guid: 84faa07d463397e468cde315f31d4079, type: 2}
 --- !u!1 &2775057032682480580
 GameObject:
   m_ObjectHideFlags: 0

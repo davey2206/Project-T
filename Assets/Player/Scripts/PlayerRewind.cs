@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class PlayerRewind : MonoBehaviour
 {
     [SerializeField] PortalManager portalManager;
+    [SerializeField] AudioMixerSnapshot rewindSound;
 
     List<RewindFrame> rewindFrames = new List<RewindFrame>();
     bool time;
@@ -37,6 +39,7 @@ public class PlayerRewind : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && !active)
         {
             StartRewindTimeToStart();
+            rewindSound.TransitionTo(0.1f);
         }
     }
 
@@ -46,7 +49,7 @@ public class PlayerRewind : MonoBehaviour
         StopAllCoroutines();
         rewindFrames.Reverse();
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        GetComponent<PlayerMovement>().enabled = false;
 
         StartCoroutine(RewindTimeToStart());
     }
