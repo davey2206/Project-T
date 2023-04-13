@@ -39,12 +39,12 @@ public class PlayerRewind : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && !active)
         {
             StartRewindTimeToStart();
-            rewindSound.TransitionTo(0.1f);
         }
     }
 
     public void StartRewindTimeToStart()
     {
+        rewindSound.TransitionTo(0.1f);
         active = true;
         StopAllCoroutines();
         rewindFrames.Reverse();
