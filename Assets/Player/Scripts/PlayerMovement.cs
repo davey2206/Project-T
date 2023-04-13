@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerControls controls;
     float movement;
     bool isGrounded;
+    float coyoteTime = 0.2f;
+    float coyoteTimeCounter;
 
 
     // Start is called before the first frame update
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        coyoteJump();
         if (movement < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -56,9 +59,24 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (isGrounded)
+        if (coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpStrength);
+
+            coyoteTimeCounter = 0f;
+            isGrounded = false;
+        }
+    }
+
+    void coyoteJump()
+    {
+        if (isGrounded) 
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
     }
 
@@ -68,13 +86,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Box"))
         {
             isGrounded = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Box"))
-        {
-            isGrounded = false;
         }
     }
 }

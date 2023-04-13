@@ -6,6 +6,7 @@ public class PressurePlate : MonoBehaviour
 {
     Button_Transmitter transmitter;
     [SerializeField][Range(0, 1)] float timeActiveAfterRelease;
+    [SerializeField] GameObject knob;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class PressurePlate : MonoBehaviour
         {
             StopAllCoroutines();
             transmitter.SetState(true);
+            knob.transform.localPosition = new Vector2(0, -0.2f);
         }
     }
 
@@ -34,5 +36,6 @@ public class PressurePlate : MonoBehaviour
     {
         yield return new WaitForSeconds(timeActiveAfterRelease);
         transmitter.SetState(false);
+        knob.transform.localPosition = new Vector2(0, 0);
     }
 }

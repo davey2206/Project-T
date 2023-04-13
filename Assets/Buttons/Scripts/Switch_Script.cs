@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Switch_Script : MonoBehaviour
 {
     [SerializeField] bool useSwitch;
+    [SerializeField] GameObject ActiveLight;
     bool isPressed = false;
     float dist;
     GameObject player;
@@ -43,6 +44,8 @@ public class Switch_Script : MonoBehaviour
         if (!context.started) return;
 
         if (dist > 12) return;
+
+        ActiveLight.SetActive(!ActiveLight.activeInHierarchy);
 
         SwitchTransmitter.SwitchStates();
     }
