@@ -7,13 +7,13 @@ public class CraneMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] ControlPanel panel;
     float vertical, horizontal;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb;
     GameObject box2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class CraneMovement : MonoBehaviour
 
         else
         {
-            rigidbody2D.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
         }
     }
     private void parent()
@@ -54,6 +54,6 @@ public class CraneMovement : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        rigidbody2D.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
 }
